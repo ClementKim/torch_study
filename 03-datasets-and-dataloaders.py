@@ -79,19 +79,14 @@ class CustomImageDataset(Dataset):
 train_dataloader = DataLoader(training_data, batch_size = 64, shuffle = True)
 test_dataloader = DataLoader(test_data, batch_size = 64, shuffle = True)
 
-while True:
-    try:
-        train_features, train_labels = next(iter(train_dataloader))
+train_features, train_labels = next(iter(train_dataloader))
 
-        print(f"\nFeature batch shape: {train_features.size()}\n")
-        print(f"Labels batch shape: {train_labels.size()}\n")
+print(f"\nFeature batch shape: {train_features.size()}\n")
+print(f"Labels batch shape: {train_labels.size()}\n")
 
-        img = train_features[0].squeeze()
-        label = train_labels[0]
-        plt.imshow(img, cmap = "gray")
-        plt.show()
+img = train_features[0].squeeze()
+label = train_labels[0]
+plt.imshow(img, cmap = "gray")
+plt.show()
 
-        print(f"\nLabel: {label}\n\n")
-
-    except:
-        break
+print(f"\nLabel: {label}\n\n")
